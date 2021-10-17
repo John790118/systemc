@@ -83,7 +83,7 @@ void pkt_switch :: pkt_switch_prc()
 	    }
     } 
 
-//  sc_stop();
+  sc_stop();
 
   cout << endl << endl << "-------------------------------------------------------------------------------" << endl;
   cout << "End of switch operation..." << endl;
