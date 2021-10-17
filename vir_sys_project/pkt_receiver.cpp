@@ -26,6 +26,8 @@ void pkt_receiver :: pkt_receiver_prc()
         cout << "               ........................" << endl;
         cout << "               New Packet Received" << endl;
         cout << "               Packet ID:      " << "Ox" << hex << temp_val.pkt_id << endl;
+        cout << "               Packet inport:  " << "Ox" << hex << temp_val.pkt_inprt << endl;
+        cout << "               Packet outport: " << "Ox" << hex << temp_val.pkt_outprt << endl;
         cout << "               Packet Length:  " << "Ox" << hex << temp_val.pkt_len << endl;
         cout << "               Packet DMAC:    " << "Ox" << hex << temp_val.pkt_dst_mac << endl;
         cout << "               Packet SMAC:    " << "Ox" << hex << temp_val.pkt_src_mac << endl;
@@ -34,6 +36,8 @@ void pkt_receiver :: pkt_receiver_prc()
         pkt_receiver_file << "               ........................" << endl;
         pkt_receiver_file << "               New Packet Received" << endl;
         pkt_receiver_file << "               Packet ID:      " << "Ox" << hex << temp_val.pkt_id << endl;
+        pkt_receiver_file << "               Packet inport:  " << "Ox" << hex << temp_val.pkt_inprt << endl;
+        pkt_receiver_file << "               Packet outport: " << "Ox" << hex << temp_val.pkt_outprt << endl;
         pkt_receiver_file << "               Packet Length:  " << "Ox" << hex << temp_val.pkt_len << endl;
         pkt_receiver_file << "               Packet DMAC:    " << "Ox" << hex << temp_val.pkt_dst_mac << endl;
         pkt_receiver_file << "               Packet SMAC:    " << "Ox" << hex << temp_val.pkt_src_mac << endl;
