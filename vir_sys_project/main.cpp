@@ -18,13 +18,24 @@ using namespace std;
 int sc_main(int argc, char *argv[])
 {
    sc_signal<pkt> pkt_in0;
+//   sc_signal<pkt> pkt_in1;
    sc_signal<pkt> pkt_out0;
+
+   
+//   string pkt_sender_outfile_str = "pkt_sender_outfile0.log";
+//   char * pkt_sender_filename0 = (char*)pkt_sender_outfile_str.c_str();
+   char * pkt_sender_filename0 = (char*)"pkt_sender_outfile0.log";
 
    sc_clock clock1("CLOCK1", 10, SC_NS, 0.5, 0.0, SC_NS);
 
    pkt_sender pkt_sender0("PKT_SENDER0");
    pkt_sender0.pkt_out(pkt_in0);
    pkt_sender0.CLK(clock1);
+   pkt_sender0.pkt_sender_filename = pkt_sender_filename0;
+
+//   pkt_sender pkt_sender1("PKT_SENDER1");
+//   pkt_sender0.pkt_out(pkt_in1);
+//   pkt_sender0.CLK(clock1);
 
    pkt_switch pkt_switch_top("PKT_SWTICH_TOP");
    pkt_switch_top.clock1(clock1);

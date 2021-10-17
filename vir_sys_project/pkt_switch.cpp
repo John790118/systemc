@@ -36,29 +36,29 @@ void pkt_switch :: pkt_switch_prc()
     { 
       wait();
 
-       /////read input packets//////////////////////////////////     
+      /////read input packets//////////////////////////////////     
       if (in0.event()) 
       {
-	      pkt_count++;
+        pkt_count++;
 	      if (q0_in.full == true) drop_count++;
           else q0_in.pkt_in(in0.read());
-      };  
+      };
 
 //      if((bool)switch_cntrl && switch_cntrl.event())
       if(clock1 && clock1.event())
 	    {
-	    /////write the register values to output fifos////////////
-      if ((!q0_out.full)&&(!q0_in.empty))
-      {
-        q0_out.pkt_in(q0_in.pkt_out());
-      }
+	      /////write the register values to output fifos////////////
+        if ((!q0_out.full)&&(!q0_in.empty))
+        {
+          q0_out.pkt_in(q0_in.pkt_out());
+        }
 
 	    /////write the packets out//////////////////////////////////    
 	    if (!q0_out.empty) out0.write(q0_out.pkt_out()); 
 	    }
     } 
 
-  sc_stop();
+//  sc_stop();
 
   cout << endl << endl << "-------------------------------------------------------------------------------" << endl;
   cout << "End of switch operation..." << endl;

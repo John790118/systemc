@@ -8,20 +8,20 @@
 void pkt_receiver :: pkt_receiver_prc()
 {
     pkt temp_val; 
-    ofstream pkt_receiver_file; 
+//    ofstream pkt_receiver_file; 
 
     while(1)
     {
         //if first packet,open new outfile
-        if (first == 1)
-        {
-            pkt_receiver_file.open("pkt_receiver_file.log");
-            first = 0;
-        }
-        else
-        {
-            pkt_receiver_file.open("pkt_receiver_file.log",ios::out | ios::app);
-        }
+//        if (first == 1)
+//        {
+//            pkt_receiver_file.open("pkt_receiver_file.log");
+//            first = 0;
+//        }
+//        else
+//        {
+//            pkt_receiver_file.open("pkt_receiver_file.log",ios::out | ios::app);
+//        }
         temp_val = pkt_in.read();
         cout << "               ........................" << endl;
         cout << "               New Packet Received" << endl;
@@ -39,7 +39,7 @@ void pkt_receiver :: pkt_receiver_prc()
         pkt_receiver_file << "               Packet SMAC:    " << "Ox" << hex << temp_val.pkt_src_mac << endl;
         pkt_receiver_file << "               Packet Type:    " << "Ox" << hex << temp_val.pkt_type << endl;
         
-        pkt_receiver_file.close();
+//        pkt_receiver_file.close();
 
         wait();
     }

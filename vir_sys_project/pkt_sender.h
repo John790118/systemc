@@ -5,11 +5,14 @@
 
 #include "systemc.h"
 #include "pkt.h"
+#include <string>
+#include <iostream>
 
 struct pkt_sender: sc_module
 {
   sc_out<pkt> pkt_out;
   sc_in_clk   CLK;
+  char* pkt_sender_filename;
 
   SC_CTOR(pkt_sender)
   {

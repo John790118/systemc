@@ -13,7 +13,8 @@ void pkt_sender::pkt_sender_prc()
     int pkt_send_count;
     
     ofstream pkt_sender_file;
-    pkt_sender_file.open("pkt_sender_file.log");
+//    pkt_sender_file.open("pkt_sender_file.log");
+    pkt_sender_file.open(pkt_sender_filename);
 
     pkt_data.pkt_id = 0;
     pkt_send_count = 0;
