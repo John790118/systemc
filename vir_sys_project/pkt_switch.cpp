@@ -9,7 +9,7 @@ void pkt_switch :: pkt_switch_prc()
 {
   wait();
 
-  int sim_count;
+//  int sim_count;
   int pkt_count;
   int drop_count;
 
@@ -23,7 +23,7 @@ void pkt_switch :: pkt_switch_prc()
   // initialization
   pkt_count = 0;
   drop_count = 0;
-  sim_count  = 0;
+//  sim_count  = 0;
 
   last_ch = 0;
 
@@ -40,8 +40,8 @@ void pkt_switch :: pkt_switch_prc()
   
   wait();
   // functionality
-  while( sim_count++ < SIM_NUM )
-//  while(1)
+//  while( sim_count++ < SIM_NUM )
+  while(1)
     { 
       wait();
 
@@ -49,15 +49,27 @@ void pkt_switch :: pkt_switch_prc()
       if (in0.event()) 
       {
         pkt_count++;
-	      if (q0_in.full == true) drop_count++;
-          else q0_in.pkt_in(in0.read());
+        cout << "****Received packets: " << dec << pkt_count << endl;
+	      if (q0_in.full == true)
+        {
+          drop_count++;
+          cout << "****Dropped packets: " << dec << drop_count << endl;
+        } 
+        else
+          q0_in.pkt_in(in0.read());
       };
 
       if (in1.event()) 
       {
         pkt_count++;
-	      if (q1_in.full == true) drop_count++;
-          else q1_in.pkt_in(in1.read());
+        cout << "****Received packets: " << dec << pkt_count << endl;
+	      if (q1_in.full == true)
+        {
+          drop_count++;
+          cout << "****Dropped packets: " << dec << drop_count << endl;
+        } 
+        else
+          q1_in.pkt_in(in1.read());
       };
 
 //      if((bool)switch_cntrl && switch_cntrl.event())
@@ -79,7 +91,8 @@ void pkt_switch :: pkt_switch_prc()
         }
 
 	    /////write the packets out//////////////////////////////////    
-	    if (!q0_out.empty) out0.write(q0_out.pkt_out()); 
+	    if (!q0_out.empty) out0.write(q0_out.pkt_out());
+
 	    }
     } 
 
