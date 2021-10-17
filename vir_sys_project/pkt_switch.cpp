@@ -13,7 +13,10 @@ void pkt_switch :: pkt_switch_prc()
   int pkt_count;
   int drop_count;
 
+  int last_ch;
+
   fifo q0_in;
+  fifo q1_in;
 
   fifo q0_out;
 
@@ -22,9 +25,15 @@ void pkt_switch :: pkt_switch_prc()
   drop_count = 0;
 //  sim_count  = 0;
 
+  last_ch = 0;
+
   q0_in.pntr = 0;
   q0_in.full  = false;
   q0_in.empty = true;
+  q1_in.pntr = 0;
+  q1_in.full  = false;
+  q1_in.empty = true;
+
   q0_out.pntr = 0;
   q0_out.full = false;
   q0_out.empty = true;
@@ -44,13 +53,29 @@ void pkt_switch :: pkt_switch_prc()
           else q0_in.pkt_in(in0.read());
       };
 
+      if (in1.event()) 
+      {
+        pkt_count++;
+	      if (q1_in.full == true) drop_count++;
+          else q1_in.pkt_in(in1.read());
+      };
+
 //      if((bool)switch_cntrl && switch_cntrl.event())
       if(clock1 && clock1.event())
 	    {
 	      /////write the register values to output fifos////////////
-        if ((!q0_out.full)&&(!q0_in.empty))
+        if (!q0_out.full)
         {
-          q0_out.pkt_in(q0_in.pkt_out());
+          if ((!q0_in.empty)&&(q1_in.empty || ((!q1_in.empty)&&(last_ch==1))))
+          {
+            q0_out.pkt_in(q0_in.pkt_out());
+            last_ch = 0;
+          }
+          else if ((!q1_in.empty)&&(q0_in.empty || ((!q0_in.empty)&&(last_ch==0))))
+          {
+            q0_out.pkt_in(q1_in.pkt_out());
+            last_ch = 1;
+          }
         }
 
 	    /////write the packets out//////////////////////////////////    

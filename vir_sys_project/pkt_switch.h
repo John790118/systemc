@@ -9,12 +9,14 @@ struct pkt_switch : sc_module
 {
     sc_in_clk   clock1;
     sc_in<pkt>  in0;
+    sc_in<pkt>  in1;
     sc_out<pkt>  out0;
 
     SC_CTOR(pkt_switch) 
      {
       SC_THREAD(pkt_switch_prc);
       sensitive << in0;
+      sensitive << in1;
       sensitive << clock1.pos();
     }  
 
