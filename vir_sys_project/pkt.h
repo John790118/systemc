@@ -11,6 +11,8 @@ typedef struct pkt_struc
    sc_int<16>  pkt_type;
    int         pkt_len;
    int         pkt_id;
+   int         pkt_inprt;
+   int         pkt_outprt;
 
    pkt_struc()
    {
@@ -31,6 +33,8 @@ struct pkt
    sc_int<16>  pkt_type;
    int         pkt_len;
    int         pkt_id;
+   int         pkt_inprt;
+   int         pkt_outprt;
 
    inline bool operator == (const pkt& rhs) const
    {
@@ -39,6 +43,8 @@ struct pkt
             && rhs.pkt_type    == pkt_type
             && rhs.pkt_len     == pkt_len
             && rhs.pkt_id      == pkt_id
+            && rhs.pkt_inprt   == pkt_inprt
+            && rhs.pkt_outprt  == pkt_outprt
             );
    }
 };
@@ -64,6 +70,8 @@ void
    sc_trace( tf, a.pkt_type, name + ".pkt_type");
    sc_trace( tf, a.pkt_len, name + ".pkt_len");
    sc_trace( tf, a.pkt_id, name + ".pkt_id");
+   sc_trace( tf, a.pkt_inprt, name + ".pkt_inprt");
+   sc_trace( tf, a.pkt_outprt, name + ".pkt_outprt");
 }
 
 #endif//_PKT_H

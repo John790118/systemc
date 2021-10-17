@@ -12,6 +12,7 @@ struct pkt_sender: sc_module
 {
   sc_out<pkt> pkt_out;
   sc_in_clk   CLK;
+  int   pkt_inprt;
   char* pkt_sender_filename;
 
   SC_CTOR(pkt_sender)

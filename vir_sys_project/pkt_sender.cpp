@@ -35,6 +35,10 @@ void pkt_sender::pkt_sender_prc()
         //define PKT_ID
         pkt_data.pkt_id++;
 
+        //define PKT_INPRT and PKT_OUTPRT
+        pkt_data.pkt_inprt  = pkt_inprt;
+        pkt_data.pkt_outprt = -1;
+
         //output pkt_data
         pkt_out.write(pkt_data);
 
@@ -42,6 +46,8 @@ void pkt_sender::pkt_sender_prc()
         cout << "........................" << endl;
         cout << "New Packet Send" << endl;
         cout << "Pakcet ID:     " << "Ox" << hex << pkt_data.pkt_id << endl;
+        cout << "Pakcet inport: " << "Ox" << hex << pkt_data.pkt_inprt << endl;
+        cout << "Pakcet outport:" << "Ox" << hex << pkt_data.pkt_outprt << endl;
         cout << "Packet Length: " << "Ox" << hex << pkt_data.pkt_len << endl;
         cout << "Packet DMAC:   " << "Ox" << hex << pkt_data.pkt_dst_mac << endl;
         cout << "Packet SMAC:   " << "Ox" << hex << pkt_data.pkt_src_mac << endl;
@@ -50,6 +56,8 @@ void pkt_sender::pkt_sender_prc()
         pkt_sender_file << "........................" << endl;
         pkt_sender_file << "New Packet Send" << endl;
         pkt_sender_file << "Pakcet ID:     " << "Ox" << hex << pkt_data.pkt_id << endl;
+        pkt_sender_file << "Pakcet inport: " << "Ox" << hex << pkt_data.pkt_inprt << endl;
+        pkt_sender_file << "Pakcet outport:" << "Ox" << hex << pkt_data.pkt_outprt << endl;
         pkt_sender_file << "Packet Length: " << "Ox" << hex << pkt_data.pkt_len << endl;
         pkt_sender_file << "Packet DMAC:   " << "Ox" << hex << pkt_data.pkt_dst_mac << endl;
         pkt_sender_file << "Packet SMAC:   " << "Ox" << hex << pkt_data.pkt_src_mac << endl;

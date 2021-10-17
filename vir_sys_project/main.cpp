@@ -32,11 +32,13 @@ int sc_main(int argc, char *argv[])
    pkt_sender pkt_sender0("PKT_SENDER0");
    pkt_sender0.pkt_out(pkt_in0);
    pkt_sender0.CLK(clock1);
+   pkt_sender0.pkt_inprt = 0;
    pkt_sender0.pkt_sender_filename = pkt_sender_filename0;
 
    pkt_sender pkt_sender1("PKT_SENDER1");
    pkt_sender1.pkt_out(pkt_in1);
    pkt_sender1.CLK(clock1);
+   pkt_sender1.pkt_inprt = 1;
    pkt_sender1.pkt_sender_filename = pkt_sender_filename1;
 
    pkt_switch pkt_switch_top("PKT_SWTICH_TOP");
