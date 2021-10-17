@@ -35,9 +35,9 @@ int sc_main(int argc, char *argv[])
    pkt_sender0.pkt_sender_filename = pkt_sender_filename0;
 
    pkt_sender pkt_sender1("PKT_SENDER1");
-   pkt_sender0.pkt_out(pkt_in1);
-   pkt_sender0.CLK(clock1);
-   pkt_sender0.pkt_sender_filename = pkt_sender_filename1;
+   pkt_sender1.pkt_out(pkt_in1);
+   pkt_sender1.CLK(clock1);
+   pkt_sender1.pkt_sender_filename = pkt_sender_filename1;
 
    pkt_switch pkt_switch_top("PKT_SWTICH_TOP");
    pkt_switch_top.clock1(clock1);
@@ -54,6 +54,7 @@ int sc_main(int argc, char *argv[])
    sc_trace_file *tf = sc_create_vcd_trace_file("Packet");
    sc_trace(tf, clock1, "CLK1");
    sc_trace(tf, pkt_in0, "PKT_IN0");
+   sc_trace(tf, pkt_in1, "PKT_IN1");
    sc_trace(tf, pkt_out0, "PKT_OUT0");
 
    sc_start(0.001,SC_MS);
