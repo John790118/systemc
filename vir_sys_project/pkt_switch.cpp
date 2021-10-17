@@ -3,13 +3,13 @@
 #include "pkt.h"
 #include "pkt_switch.h"
 #include "fifo.h"
-#define SIM_NUM 500
+#define SIM_NUM 20
 
 void pkt_switch :: pkt_switch_prc()
 {
   wait();
 
-//  int sim_count;
+  int sim_count;
   int pkt_count;
   int drop_count;
 
@@ -23,7 +23,7 @@ void pkt_switch :: pkt_switch_prc()
   // initialization
   pkt_count = 0;
   drop_count = 0;
-//  sim_count  = 0;
+  sim_count  = 0;
 
   last_ch = 0;
 
@@ -40,8 +40,8 @@ void pkt_switch :: pkt_switch_prc()
   
   wait();
   // functionality
-//  while( sim_count++ < SIM_NUM )
-  while(1)
+  while( sim_count++ < SIM_NUM )
+//  while(1)
     { 
       wait();
 
