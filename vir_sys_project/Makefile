@@ -12,7 +12,7 @@ LDLIBS   += $(shell pkg-config --libs-only-l     systemc)
 SOURCES = pkt_sender.cpp \
 	pkt_receiver.cpp \
 	fifo.cpp \
-	pkt_switch.cpp \
+	pkt_sch.cpp \
 	  main.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)

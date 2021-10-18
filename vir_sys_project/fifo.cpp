@@ -43,6 +43,7 @@
     {
       regs[pntr++] = data_pkt; empty = false;
       if (pntr == 4) full = true;      
+//      if (pntr == 8) full = true;      
     }
 
     pkt fifo::pkt_out()
@@ -55,6 +56,10 @@
             regs[0] = regs[1];
 	    regs[1] = regs[2];
 	    regs[2] = regs[3];
+//	    regs[3] = regs[4];
+//	    regs[4] = regs[5];
+//	    regs[5] = regs[6];
+//	    regs[6] = regs[7];
         } 
       return(temp);  
     }

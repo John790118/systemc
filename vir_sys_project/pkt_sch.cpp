@@ -1,11 +1,11 @@
 
 #include "systemc.h"
 #include "pkt.h"
-#include "pkt_switch.h"
+#include "pkt_sch.h"
 #include "fifo.h"
 #define SIM_NUM 20
 
-void pkt_switch :: pkt_switch_prc()
+void pkt_sch :: pkt_sch_prc()
 {
   wait();
 

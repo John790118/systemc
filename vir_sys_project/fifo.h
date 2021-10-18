@@ -44,9 +44,10 @@
 struct fifo {
 
    pkt regs[4];
+//   pkt regs[8];
    bool full;
    bool empty;
-   sc_uint<3> pntr;
+   sc_uint<4> pntr;
   
    // constructor
 
